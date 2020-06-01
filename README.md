@@ -1,0 +1,1 @@
+My implementation of Conway's Game of Life, which can be played with a mouse.
