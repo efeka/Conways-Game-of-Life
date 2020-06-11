@@ -5,6 +5,8 @@ public class GameSpeedButton extends GameObject {
 
 	private MouseInput mouse;
 	private int mouseX, mouseY;
+	
+	private boolean mouseHover = false;
 
 	public static int width = 120, height = 60;
 
@@ -32,25 +34,38 @@ public class GameSpeedButton extends GameObject {
 						state++;
 						state %= 3;
 						if (state == 0)
-							GameMain.gameSpeed = 400;
+							GameMain.gameSpeed = 700;
 						else if (state == 1)
 							GameMain.gameSpeed = 200;
 						else if (state == 2)
 							GameMain.gameSpeed = 50;
+						mouseHover = false;
 					}
 				}
+				else
+					mouseHover = true;
 			}
+			else
+				mouseHover = false;
 		}
+		else
+			mouseHover = false;
 	}
 
 	public void render(Graphics g) {
-		g.setColor(new Color(66, 129, 44));
+		if (!mouseHover)
+			g.setColor(new Color(66, 129, 44));
+		else
+			g.setColor(new Color(66*8/5, 129*8/5, 44*8/5));
 		g.fillRoundRect(x, y, width, height, 20, 20);
 
 		g.setColor(Color.black);
 		g.fillRoundRect(x + 5, y + 5, width - 10, height - 10, 10, 10);
 
-		g.setColor(new Color(66*6/5, 129*6/5, 44*6/5));
+		if (!mouseHover)
+			g.setColor(new Color(66, 129, 44));
+		else
+			g.setColor(new Color(66*8/5, 129*8/5, 44*8/5));
 		int[] xPoints = {x + 16, x + 16, x + width - 74};
 		int[] yPoints = {y + 13, y + 45, y + (13 + 45) / 2};
 

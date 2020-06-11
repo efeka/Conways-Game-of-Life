@@ -39,9 +39,9 @@ public class Cell extends GameObject {
 	public void render(Graphics g) {
 		if (!alive)
 			return;
+		
 		g.setColor(new Color(77, 254, 0));
 		g.fillRect(x, y, size, size);
-
 	}
 
 	public void setAlive(boolean alive) { this.alive = alive; }
